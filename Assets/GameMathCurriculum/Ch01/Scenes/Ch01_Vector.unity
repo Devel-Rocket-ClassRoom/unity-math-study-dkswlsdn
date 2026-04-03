@@ -716,7 +716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff2172da1632a4f499f18b79f2070338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assignment_EnemyDetector
-  detectionFOV: 90
+  detectionFOV: 60
   detectionRange: 10
   uiInfoText: {fileID: 0}
   detectedCount: 0
@@ -733,6 +733,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assignment_DirectionAlert
   alertRange: 8
+  sideThreshold: 30
   uiInfoText: {fileID: 0}
   nearbyEnemies: []
 --- !u!1001 &1436931446

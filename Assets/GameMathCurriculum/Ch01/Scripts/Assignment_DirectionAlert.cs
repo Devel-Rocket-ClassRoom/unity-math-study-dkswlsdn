@@ -33,6 +33,11 @@ public class Assignment_DirectionAlert : MonoBehaviour
     [Range(1f, 30f)]
     [SerializeField] private float alertRange = 15f;
 
+    [Header("=== 전후방 판별 설정 ===")]
+    [Tooltip("전후방 판별 각도")]
+    [Range(1f, 30f)]
+    [SerializeField] private float sideThreshold = 15f;
+
     [Header("=== UI 연결 ===")]
     [Tooltip("정보 표시용 TMP_Text (Canvas 하위에 배치)")]
     [SerializeField] private TMP_Text uiInfoText;
@@ -75,16 +80,17 @@ public class Assignment_DirectionAlert : MonoBehaviour
 
     private Direction GetDirection(Transform enemy)
     {
-        Vector3 toTarget = (enemy.position - transform.position).normalized;
-        float angle = Vector3.Dot(transform.forward, toTarget);
+        Vector3 toTarget = (enemy.position - transform.position);
+        toTarget.y = 0;
 
-        if (angle >= Mathf.Cos(45f * Mathf.Deg2Rad)) return Direction.Front;
-        else if (angle <= -Mathf.Cos(45f * Mathf.Deg2Rad)) return Direction.Back;
+        Vector3 cross = Vector3.Cross(transform.forward, toTarget.normalized);
+        float dot = Vector3.Dot(transform.forward, toTarget.normalized);
 
-        angle = Vector3.Cross(transform.forward, toTarget).y;
+        if (dot >= Mathf.Cos(sideThreshold * Mathf.Deg2Rad)) return Direction.Front;
+        else if (dot <= -Mathf.Cos(sideThreshold * Mathf.Deg2Rad)) return Direction.Back;
 
-        if (angle > 0) return Direction.Right;
-        else if (angle < 0) return Direction.Left;
+        if (cross.y > 0) return Direction.Right;
+        else if (cross.y < 0) return Direction.Left;
 
         return Direction.None;
     }
