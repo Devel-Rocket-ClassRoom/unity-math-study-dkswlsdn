@@ -30,7 +30,6 @@ public class Assignment_BulletHell : MonoBehaviour
     [Header("=== 나선형 패턴 파라미터 ===")]
     [Tooltip("나선형 회전 속도 (라디안/초)")] [Range(0.5f, 5f)]
     [SerializeField] private float spiralTurnSpeed = 2f;
-    private float radianPlus = 0f;
 
     [Header("=== 부채꼴 패턴 파라미터 ===")]
     [Tooltip("부채꼴 각도 범위 (도, 360까지)")] [Range(30f, 360f)]
@@ -85,8 +84,6 @@ public class Assignment_BulletHell : MonoBehaviour
 
             Destroy(bullet, 10f);
         }
-
-        radianPlus += spiralTurnSpeed * fireInterval;
     }
 
     private Vector3 CalculateCircleDirection(int index, int total)
@@ -101,7 +98,7 @@ public class Assignment_BulletHell : MonoBehaviour
 
     private Vector3 CalculateSpiralDirection(int index, int total)
     {
-        float radian = 2 * Mathf.PI / total * index + radianPlus;
+        float radian = 2 * Mathf.PI / total * index + Time.time * spiralTurnSpeed;
 
         float x = Mathf.Cos(radian);
         float z = Mathf.Sin(radian);
