@@ -270,7 +270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1592315350122844830, guid: 8add092940f04e142a97aa71624fbce8, type: 3}
       propertyPath: patternType
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1592315350122844830, guid: 8add092940f04e142a97aa71624fbce8, type: 3}
       propertyPath: bulletPrefab
