@@ -174,7 +174,7 @@ public class Assignment_GachaSimulator : MonoBehaviour
             expectedMsg += $"예상 뽑기: {expectedPulls:F0}회";
         }
 
-        //expectedValueText.text = expectedMsg;
+        expectedValueText.text = expectedMsg;
     }
 
 #if UNITY_EDITOR
