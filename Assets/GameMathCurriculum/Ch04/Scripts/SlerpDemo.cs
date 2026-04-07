@@ -165,7 +165,7 @@ public class SlerpDemo : MonoBehaviour
         lerpRotation = Quaternion.Lerp(lerpRotation, targetRotation, t);
         slerpRotation = Quaternion.Slerp(lerpRotation, targetRotation, t);
 
-
+        
     }
 
     private void CalculateAngularVelocity()
