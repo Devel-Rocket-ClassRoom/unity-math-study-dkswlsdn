@@ -938,7 +938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assignment_SmoothCamera
   target: {fileID: 1362612647}
-  offset: {x: 0, y: 5, z: -8}
+  offset: {x: 0, y: 4, z: -10}
   positionSmoothTime: 0.3
   zoomSmoothTime: 0.2
   rotationSmoothSpeed: 5

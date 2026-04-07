@@ -85,22 +85,20 @@ public class Assignment_SmoothCamera : MonoBehaviour
 
         targetZoomDistance = Mathf.Clamp(targetZoomDistance + input * zoomSpeed, minZoomDistance, maxZoomDistance);
 
-        currentZoomDistance = Mathf.Clamp(
-            Mathf.SmoothDamp(
-            currentZoomDistance, targetZoomDistance,
-            ref zoomVelocity, zoomSmoothTime)
-            , minZoomDistance, maxZoomDistance);
-
-        //currentZoomDistance = Mathf.Clamp(currentZoomDistance + input, minZoomDistance, maxZoomDistance);
+        currentZoomDistance = Mathf.SmoothDamp(
+            currentZoomDistance,
+            targetZoomDistance,
+            ref zoomVelocity,
+            zoomSmoothTime);
     }
     void FollowCamera()
     {
-        transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, target.rotation, rotationSmoothSpeed * Time.deltaTime);
    
         transform.position = Vector3.SmoothDamp(
             transform.position,
-            target.position + transform.rotation * offset.normalized * currentZoomDistance
-            ,ref positionVelocity,
+            target.position + transform.rotation * offset.normalized * currentZoomDistance,
+            ref positionVelocity,
             positionSmoothTime);
     }
 
